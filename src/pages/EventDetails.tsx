@@ -6,18 +6,18 @@ const details = [
     icon: MapPin,
     title: "Venue",
     items: [
-      "The Vineyard Estate",
-      "1234 Grapevine Lane",
-      "Napa Valley, CA 94558",
+      "Kew Gardens Orangery",
+      "Royal Botanic Gardens, Kew",
+      "Richmond, London TW9 3AE",
     ],
   },
   {
     icon: Clock,
     title: "Schedule",
     items: [
-      "4:00 PM — Ceremony at The Chapel",
-      "5:00 PM — Cocktails on The Terrace",
-      "6:30 PM — Dinner & Dancing in The Barrel Room",
+      "2:00 PM — Ceremony at The Orangery",
+      "3:30 PM — Cocktails in The Courtyard",
+      "5:00 PM — Dinner & Dancing in The Grand Hall",
       "11:00 PM — Sparkler Send-Off",
     ],
   },
@@ -25,20 +25,20 @@ const details = [
     icon: Shirt,
     title: "Dress Code",
     items: [
-      "Semi-formal / Garden Chic",
-      "Ladies: Cocktail dresses or jumpsuits",
-      "Gentlemen: Suits or sport coats",
-      "Please avoid white and off-white",
+      "Black Tie Optional",
+      "Ladies: Floor-length gowns or cocktail dresses",
+      "Gentlemen: Tuxedos or dark suits",
+      "Please avoid white and ivory",
     ],
   },
   {
     icon: Car,
     title: "Accommodations",
     items: [
-      "Napa Valley Lodge — Group rate available",
-      "Call (707) 555-0123 and mention 'A&J Wedding'",
+      "The Bingham Riverhouse — Group rate available",
+      "Email us for the booking code",
       "Shuttle service provided to and from the venue",
-      "Parking available on-site",
+      "Nearest tube: Kew Gardens (District Line)",
     ],
   },
 ];
@@ -47,25 +47,25 @@ const EventDetails = () => (
   <div className="pt-20">
     <Section>
       <FadeIn>
-        <div className="text-center mb-16">
-          <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Everything you need to know</p>
-          <h1 className="text-5xl md:text-6xl font-display italic text-foreground">Event Details</h1>
+        <div className="text-center mb-20">
+          <p className="text-xs tracking-[0.5em] uppercase text-primary/70 mb-6 font-body font-light">Everything you need to know</p>
+          <h1 className="text-5xl md:text-7xl font-display italic text-foreground">The Details</h1>
         </div>
       </FadeIn>
 
       <Divider />
 
-      <div className="space-y-12">
+      <div className="space-y-px bg-border">
         {details.map((section, i) => (
           <FadeIn key={section.title} delay={i * 0.1}>
-            <div className="bg-card border border-border p-8 md:p-10">
-              <div className="flex items-center gap-3 mb-6">
-                <section.icon size={20} className="text-primary" />
-                <h2 className="font-display text-2xl text-foreground">{section.title}</h2>
+            <div className="bg-card p-10 md:p-14">
+              <div className="flex items-center gap-4 mb-8">
+                <section.icon size={18} className="text-primary/70" strokeWidth={1.5} />
+                <h2 className="font-display text-2xl md:text-3xl italic text-foreground">{section.title}</h2>
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-3 ml-9">
                 {section.items.map((item) => (
-                  <li key={item} className="text-muted-foreground leading-relaxed">{item}</li>
+                  <li key={item} className="text-muted-foreground leading-relaxed font-light">{item}</li>
                 ))}
               </ul>
             </div>
