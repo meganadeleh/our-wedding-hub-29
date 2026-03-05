@@ -16,10 +16,12 @@ const WeddingNav = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/30">
       <div className="container mx-auto flex items-center justify-between py-5 px-6">
-        <Link to="/" className="font-display text-2xl italic tracking-wide text-foreground">
-          M <span className="text-primary">&</span> M
+        <Link to="/" className="flex items-center gap-0 text-foreground/80 hover:text-foreground transition-colors">
+          <span className="font-display text-xl italic tracking-wider">M</span>
+          <span className="text-primary/50 text-xs mx-1.5 font-extralight">|</span>
+          <span className="font-display text-xl italic tracking-wider">M</span>
         </Link>
 
         {/* Desktop */}
@@ -28,7 +30,7 @@ const WeddingNav = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 hover:text-primary ${
+              className={`text-[10px] tracking-[0.25em] uppercase transition-colors duration-300 font-body hover:text-primary ${
                 location.pathname === item.path ? "text-primary" : "text-muted-foreground"
               }`}
             >
@@ -39,11 +41,11 @@ const WeddingNav = () => {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground/70"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
 
@@ -54,7 +56,7 @@ const WeddingNav = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-b border-border/50 overflow-hidden"
+            className="md:hidden bg-background border-b border-border/30 overflow-hidden"
           >
             <div className="flex flex-col items-center gap-6 py-8">
               {navItems.map((item) => (
@@ -62,7 +64,7 @@ const WeddingNav = () => {
                   key={item.path}
                   to={item.path}
                   onClick={() => setMobileOpen(false)}
-                  className={`text-xs tracking-[0.2em] uppercase transition-colors ${
+                  className={`text-[10px] tracking-[0.25em] uppercase transition-colors font-body ${
                     location.pathname === item.path ? "text-primary" : "text-muted-foreground"
                   }`}
                 >

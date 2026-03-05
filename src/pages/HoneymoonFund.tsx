@@ -36,7 +36,7 @@ const HoneymoonFund = () => {
         <FadeIn>
           <div className="text-center mb-20">
             <p className="text-xs tracking-[0.5em] uppercase text-primary/70 mb-6 font-body font-light">Help us create memories</p>
-            <h1 className="text-5xl md:text-7xl font-display italic text-foreground">Honeymoon Fund</h1>
+            <h1 className="text-5xl md:text-7xl font-script text-foreground">Honeymoon Fund</h1>
             <p className="text-muted-foreground mt-8 max-w-xl mx-auto leading-relaxed font-light text-lg">
               Your presence at our wedding is the greatest gift. However, if you wish to
               contribute to our honeymoon, we would be incredibly grateful.

@@ -18,7 +18,7 @@ export const FadeIn = ({ children, className = "", delay = 0 }: { children: Reac
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 1, delay, ease: [0.25, 0.1, 0.25, 1] }}
+    transition={{ duration: 1.2, delay, ease: [0.25, 0.1, 0.25, 1] }}
     className={className}
   >
     {children}
@@ -26,9 +26,9 @@ export const FadeIn = ({ children, className = "", delay = 0 }: { children: Reac
 );
 
 export const Divider = () => (
-  <div className="flex items-center justify-center gap-6 my-16">
-    <div className="h-px w-20 bg-gradient-to-r from-transparent to-primary/30" />
-    <span className="text-primary text-sm font-display tracking-widest">✦</span>
-    <div className="h-px w-20 bg-gradient-to-l from-transparent to-primary/30" />
+  <div className="flex items-center justify-center gap-8 my-20">
+    <div className="h-px w-24 bg-gradient-to-r from-transparent to-primary/20" />
+    <span className="text-primary/40 text-[10px] font-body tracking-[0.5em]">✦</span>
+    <div className="h-px w-24 bg-gradient-to-l from-transparent to-primary/20" />
   </div>
 );

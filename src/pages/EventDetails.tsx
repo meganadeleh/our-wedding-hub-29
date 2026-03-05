@@ -48,24 +48,24 @@ const EventDetails = () => (
     <Section>
       <FadeIn>
         <div className="text-center mb-20">
-          <p className="text-xs tracking-[0.5em] uppercase text-primary/70 mb-6 font-body font-light">Everything you need to know</p>
-          <h1 className="text-5xl md:text-7xl font-display italic text-foreground">The Details</h1>
+          <p className="text-[10px] tracking-[0.6em] uppercase text-primary/60 mb-6 font-body font-extralight">Everything you need to know</p>
+          <h1 className="text-5xl md:text-7xl font-script text-foreground">The Details</h1>
         </div>
       </FadeIn>
 
       <Divider />
 
-      <div className="space-y-px bg-border">
+      <div className="space-y-px bg-border/30">
         {details.map((section, i) => (
           <FadeIn key={section.title} delay={i * 0.1}>
             <div className="bg-card p-10 md:p-14">
               <div className="flex items-center gap-4 mb-8">
-                <section.icon size={18} className="text-primary/70" strokeWidth={1.5} />
-                <h2 className="font-display text-2xl md:text-3xl italic text-foreground">{section.title}</h2>
+                <section.icon size={16} className="text-primary/50" strokeWidth={1} />
+                <h2 className="font-script text-3xl text-foreground">{section.title}</h2>
               </div>
-              <ul className="space-y-3 ml-9">
+              <ul className="space-y-3 ml-8">
                 {section.items.map((item) => (
-                  <li key={item} className="text-muted-foreground leading-relaxed font-light">{item}</li>
+                  <li key={item} className="text-muted-foreground leading-relaxed font-extralight">{item}</li>
                 ))}
               </ul>
             </div>

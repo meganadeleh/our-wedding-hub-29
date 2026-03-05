@@ -5,14 +5,14 @@ const OurStory = () => (
     <Section>
       <FadeIn>
         <div className="text-center mb-20">
-          <p className="text-xs tracking-[0.5em] uppercase text-primary/70 mb-6 font-body font-light">How it all began</p>
-          <h1 className="text-5xl md:text-7xl font-display italic text-foreground">Our Story</h1>
+          <p className="text-[10px] tracking-[0.6em] uppercase text-primary/60 mb-6 font-body font-extralight">How it all began</p>
+          <h1 className="text-5xl md:text-7xl font-script text-foreground">Our Story</h1>
         </div>
       </FadeIn>
 
       <Divider />
 
-      <div className="space-y-20">
+      <div className="space-y-24">
         {[
           {
             year: "2019",
@@ -36,15 +36,15 @@ const OurStory = () => (
           },
         ].map((event, i) => (
           <FadeIn key={event.year} delay={i * 0.1}>
-            <div className="flex gap-10 items-start">
+            <div className="flex gap-12 items-start">
               <div className="hidden md:flex flex-col items-center">
-                <span className="text-3xl font-display text-primary/80">{event.year}</span>
-                <div className="w-px h-full bg-border mt-4" />
+                <span className="text-3xl font-script text-primary/60">{event.year}</span>
+                <div className="w-px h-full bg-border/50 mt-4" />
               </div>
               <div className="flex-1">
-                <span className="md:hidden text-xs text-primary/80 font-display tracking-widest mb-2 block">{event.year}</span>
-                <h3 className="font-display text-2xl md:text-3xl italic text-foreground mb-4">{event.title}</h3>
-                <p className="text-muted-foreground leading-relaxed font-light">{event.text}</p>
+                <span className="md:hidden text-xs text-primary/60 font-body tracking-[0.3em] mb-2 block">{event.year}</span>
+                <h3 className="font-script text-3xl md:text-4xl text-foreground mb-5">{event.title}</h3>
+                <p className="text-muted-foreground leading-loose font-extralight">{event.text}</p>
               </div>
             </div>
           </FadeIn>

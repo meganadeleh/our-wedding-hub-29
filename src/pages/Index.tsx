@@ -15,8 +15,8 @@ const Index = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
         />
-        <div className="absolute inset-0 bg-background/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
+        <div className="absolute inset-0 bg-background/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-background/40" />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -27,7 +27,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }}
-            className="text-foreground/60 text-xs tracking-[0.5em] uppercase mb-8 font-body font-light"
+            className="text-foreground/50 text-xs tracking-[0.5em] uppercase mb-10 font-body font-light"
           >
             Together with their families
           </motion.p>
@@ -35,7 +35,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 1.3 }}
-            className="text-7xl md:text-9xl font-display italic text-foreground leading-none"
+            className="text-7xl md:text-9xl font-script text-foreground leading-none"
           >
             Megan
           </motion.h1>
@@ -43,7 +43,7 @@ const Index = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 1.8 }}
-            className="text-primary text-3xl md:text-4xl font-display my-4"
+            className="text-primary/80 text-2xl font-display italic my-3 tracking-widest"
           >
             &
           </motion.p>
@@ -51,7 +51,7 @@ const Index = () => {
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 2 }}
-            className="text-7xl md:text-9xl font-display italic text-foreground leading-none"
+            className="text-7xl md:text-9xl font-script text-foreground leading-none"
           >
             Myles
           </motion.h1>
@@ -60,11 +60,11 @@ const Index = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 2.8 }}
           >
-            <div className="w-16 h-px bg-primary mx-auto my-8" />
-            <p className="text-foreground/70 text-sm md:text-base tracking-[0.3em] font-body font-light">
+            <div className="w-12 h-px bg-primary/40 mx-auto my-10" />
+            <p className="text-foreground/60 text-sm tracking-[0.4em] font-body font-extralight">
               12 · 06 · 2027
             </p>
-            <p className="text-foreground/50 text-xs tracking-[0.4em] uppercase mt-2 font-body">
+            <p className="text-foreground/40 text-xs tracking-[0.4em] uppercase mt-2 font-body font-light">
               London, England
             </p>
           </motion.div>
@@ -75,7 +75,7 @@ const Index = () => {
           >
             <Link
               to="/rsvp"
-              className="inline-block mt-12 px-10 py-4 border border-primary/40 text-primary text-xs tracking-[0.3em] uppercase hover:bg-primary/10 hover:border-primary/60 transition-all duration-500"
+              className="inline-block mt-14 px-12 py-4 border border-primary/30 text-primary/90 text-[10px] tracking-[0.4em] uppercase hover:bg-primary/5 hover:border-primary/50 transition-all duration-700 font-body"
             >
               RSVP
             </Link>
@@ -87,12 +87,12 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 4, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="w-px h-12 bg-gradient-to-b from-transparent to-primary/50"
+            transition={{ repeat: Infinity, duration: 2.5 }}
+            className="w-px h-14 bg-gradient-to-b from-transparent to-primary/30"
           />
         </motion.div>
       </div>
@@ -101,13 +101,13 @@ const Index = () => {
       <Section>
         <FadeIn>
           <div className="text-center">
-            <p className="text-xs tracking-[0.5em] uppercase text-primary/70 mb-6 font-body font-light">
+            <p className="text-[10px] tracking-[0.6em] uppercase text-primary/60 mb-6 font-body font-extralight">
               An Invitation
             </p>
-            <h2 className="text-4xl md:text-6xl font-display italic text-foreground mb-8 leading-tight">
+            <h2 className="text-4xl md:text-6xl font-script text-foreground mb-8">
               A Celebration of Love
             </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto font-light text-lg">
+            <p className="text-muted-foreground leading-loose max-w-2xl mx-auto font-extralight text-lg">
               We joyfully invite you to share in our happiness as we exchange vows and begin
               our new life together. Your presence would mean the world to us on this special day.
             </p>
@@ -117,16 +117,16 @@ const Index = () => {
         <Divider />
 
         <FadeIn delay={0.2}>
-          <div className="grid md:grid-cols-3 gap-px bg-border">
+          <div className="grid md:grid-cols-3 gap-px bg-border/50">
             {[
               { label: "Ceremony", time: "2:00 PM", detail: "The Chapel" },
               { label: "Cocktails", time: "3:30 PM", detail: "The Courtyard" },
               { label: "Reception", time: "5:00 PM", detail: "The Grand Hall" },
             ].map((item) => (
-              <div key={item.label} className="p-10 bg-background text-center">
-                <p className="text-xs tracking-[0.3em] uppercase text-primary/60 mb-3">{item.label}</p>
-                <p className="text-3xl font-display text-foreground mb-2">{item.time}</p>
-                <p className="text-sm text-muted-foreground font-light">{item.detail}</p>
+              <div key={item.label} className="p-12 bg-background text-center">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-primary/50 mb-4 font-body">{item.label}</p>
+                <p className="text-3xl font-script text-foreground mb-2">{item.time}</p>
+                <p className="text-sm text-muted-foreground font-extralight">{item.detail}</p>
               </div>
             ))}
           </div>
@@ -134,10 +134,10 @@ const Index = () => {
       </Section>
 
       {/* Quick links */}
-      <div className="py-20 px-6">
+      <div className="py-24 px-6">
         <div className="container mx-auto max-w-5xl">
           <FadeIn>
-            <div className="grid md:grid-cols-2 gap-px bg-border">
+            <div className="grid md:grid-cols-2 gap-px bg-border/50">
               {[
                 { to: "/our-story", title: "Our Story", desc: "How it all began" },
                 { to: "/details", title: "The Details", desc: "Everything you need to know" },
@@ -147,12 +147,12 @@ const Index = () => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="group p-12 bg-card hover:bg-secondary transition-all duration-500 text-center"
+                  className="group p-14 bg-card hover:bg-secondary/50 transition-all duration-700 text-center"
                 >
-                  <h3 className="font-display text-2xl italic text-foreground group-hover:text-primary transition-colors duration-500">
+                  <h3 className="font-script text-3xl text-foreground group-hover:text-primary transition-colors duration-500">
                     {link.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-3 font-light tracking-wide">{link.desc}</p>
+                  <p className="text-sm text-muted-foreground mt-3 font-extralight tracking-wider">{link.desc}</p>
                 </Link>
               ))}
             </div>

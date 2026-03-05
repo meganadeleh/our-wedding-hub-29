@@ -30,7 +30,7 @@ const RSVP = () => {
         <FadeIn>
           <div className="text-center mb-20">
             <p className="text-xs tracking-[0.5em] uppercase text-primary/70 mb-6 font-body font-light">We hope you can make it</p>
-            <h1 className="text-5xl md:text-7xl font-display italic text-foreground">RSVP</h1>
+            <h1 className="text-5xl md:text-7xl font-script text-foreground">RSVP</h1>
             <p className="text-muted-foreground mt-6 max-w-xl mx-auto font-light">
               Please respond by April 1, 2027
             </p>
