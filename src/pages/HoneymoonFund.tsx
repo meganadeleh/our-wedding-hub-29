@@ -4,10 +4,10 @@ import { Heart, Plane, UtensilsCrossed, Waves, Camera } from "lucide-react";
 import { toast } from "sonner";
 
 const fundItems = [
-  { icon: Plane, title: "Flights to Italy", goal: 2000, desc: "Help us fly to the land of romance" },
-  { icon: UtensilsCrossed, title: "Romantic Dinners", goal: 500, desc: "Candlelit meals in Tuscany" },
-  { icon: Waves, title: "Amalfi Coast Boat Tour", goal: 800, desc: "Sailing the Mediterranean" },
-  { icon: Camera, title: "Photography Experience", goal: 400, desc: "Capture our honeymoon memories" },
+  { icon: Plane, title: "Flights to Bali", goal: 2000, desc: "Help us fly to paradise" },
+  { icon: UtensilsCrossed, title: "Fine Dining", goal: 500, desc: "Unforgettable culinary experiences" },
+  { icon: Waves, title: "Private Beach Villa", goal: 1200, desc: "A week in our own slice of heaven" },
+  { icon: Camera, title: "Photography", goal: 400, desc: "Capture our honeymoon memories" },
   { icon: Heart, title: "General Fund", goal: 0, desc: "Any contribution is deeply appreciated" },
 ];
 
@@ -23,7 +23,7 @@ const HoneymoonFund = () => {
       toast.error("Please fill in your name and amount");
       return;
     }
-    toast.success(`Thank you ${name}! Your gift of $${amount} means the world to us! 💕`);
+    toast.success(`Thank you ${name}! Your gift of £${amount} means the world to us! 💕`);
     setAmount("");
     setName("");
     setMessage("");
@@ -34,36 +34,36 @@ const HoneymoonFund = () => {
     <div className="pt-20">
       <Section>
         <FadeIn>
-          <div className="text-center mb-16">
-            <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Help us create memories</p>
-            <h1 className="text-5xl md:text-6xl font-display italic text-foreground">Honeymoon Fund</h1>
-            <p className="text-muted-foreground mt-6 max-w-xl mx-auto leading-relaxed">
-              Your presence at our wedding is the greatest gift of all. However, if you wish to
-              contribute to our honeymoon in Italy, we would be incredibly grateful.
+          <div className="text-center mb-20">
+            <p className="text-xs tracking-[0.5em] uppercase text-primary/70 mb-6 font-body font-light">Help us create memories</p>
+            <h1 className="text-5xl md:text-7xl font-display italic text-foreground">Honeymoon Fund</h1>
+            <p className="text-muted-foreground mt-8 max-w-xl mx-auto leading-relaxed font-light text-lg">
+              Your presence at our wedding is the greatest gift. However, if you wish to
+              contribute to our honeymoon, we would be incredibly grateful.
             </p>
           </div>
         </FadeIn>
 
         <Divider />
 
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 gap-px bg-border mb-20">
           {fundItems.map((item, i) => (
             <FadeIn key={item.title} delay={i * 0.05}>
               <button
                 onClick={() => setSelectedItem(item.title)}
-                className={`w-full text-left p-6 border transition-all duration-300 ${
+                className={`w-full text-left p-8 transition-all duration-500 ${
                   selectedItem === item.title
-                    ? "border-primary bg-primary/5"
-                    : "border-border bg-card hover:border-primary/30"
+                    ? "bg-primary/10"
+                    : "bg-card hover:bg-secondary"
                 }`}
               >
-                <div className="flex items-center gap-3 mb-2">
-                  <item.icon size={18} className="text-primary" />
-                  <h3 className="font-display text-lg text-foreground">{item.title}</h3>
+                <div className="flex items-center gap-3 mb-3">
+                  <item.icon size={16} className="text-primary/70" strokeWidth={1.5} />
+                  <h3 className="font-display text-lg italic text-foreground">{item.title}</h3>
                 </div>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
+                <p className="text-sm text-muted-foreground font-light">{item.desc}</p>
                 {item.goal > 0 && (
-                  <p className="text-xs text-accent mt-2 font-medium">Goal: ${item.goal}</p>
+                  <p className="text-xs text-primary/50 mt-3 tracking-wide">Goal: £{item.goal}</p>
                 )}
               </button>
             </FadeIn>
@@ -72,35 +72,35 @@ const HoneymoonFund = () => {
 
         <FadeIn>
           <div className="max-w-md mx-auto">
-            <h2 className="font-display text-2xl text-center text-foreground mb-8">
+            <h2 className="font-display text-2xl italic text-center text-foreground mb-10">
               {selectedItem ? `Contributing to: ${selectedItem}` : "Send a Gift"}
             </h2>
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="text-sm text-muted-foreground tracking-wide block mb-2">Your Name</label>
+                <label className="text-xs text-muted-foreground tracking-[0.2em] uppercase block mb-3 font-light">Your Name</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-card border border-border px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors"
+                  className="w-full bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/30 focus:outline-none focus:border-primary transition-colors duration-500"
                   placeholder="Your full name"
                 />
               </div>
               <div>
-                <label className="text-sm text-muted-foreground tracking-wide block mb-2">Amount ($)</label>
-                <div className="flex gap-3 mb-3">
+                <label className="text-xs text-muted-foreground tracking-[0.2em] uppercase block mb-3 font-light">Amount (£)</label>
+                <div className="flex gap-3 mb-4">
                   {[50, 100, 200, 500].map((preset) => (
                     <button
                       type="button"
                       key={preset}
                       onClick={() => setAmount(String(preset))}
-                      className={`flex-1 py-2 border text-sm transition-colors ${
+                      className={`flex-1 py-3 border text-sm transition-all duration-300 ${
                         amount === String(preset)
                           ? "border-primary bg-primary/10 text-primary"
                           : "border-border text-muted-foreground hover:border-primary/30"
                       }`}
                     >
-                      ${preset}
+                      £{preset}
                     </button>
                   ))}
                 </div>
@@ -108,30 +108,30 @@ const HoneymoonFund = () => {
                   type="number"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="w-full bg-card border border-border px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors"
+                  className="w-full bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/30 focus:outline-none focus:border-primary transition-colors duration-500"
                   placeholder="Or enter custom amount"
                   min="1"
                 />
               </div>
               <div>
-                <label className="text-sm text-muted-foreground tracking-wide block mb-2">Message (optional)</label>
+                <label className="text-xs text-muted-foreground tracking-[0.2em] uppercase block mb-3 font-light">Message (optional)</label>
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={3}
-                  className="w-full bg-card border border-border px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors resize-none"
+                  className="w-full bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/30 focus:outline-none focus:border-primary transition-colors duration-500 resize-none"
                   placeholder="Write a note to the couple..."
                 />
               </div>
               <button
                 type="submit"
-                className="w-full py-3 bg-primary text-primary-foreground tracking-widest uppercase text-sm hover:opacity-90 transition-opacity"
+                className="w-full py-4 bg-primary text-primary-foreground tracking-[0.3em] uppercase text-xs hover:opacity-90 transition-opacity mt-4"
               >
                 Send Gift
               </button>
             </form>
-            <p className="text-xs text-muted-foreground text-center mt-6">
-              Note: This is a placeholder form. For real payments, connect a payment provider like Venmo, PayPal, or Zelle.
+            <p className="text-xs text-muted-foreground/40 text-center mt-8 font-light">
+              This is a placeholder. For real payments, connect Stripe, PayPal, or bank transfer details.
             </p>
           </div>
         </FadeIn>

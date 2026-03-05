@@ -1,10 +1,11 @@
 const WeddingFooter = () => (
-  <footer className="py-12 px-6 border-t border-border text-center">
-    <p className="font-display text-2xl italic text-foreground mb-2">Amelia & James</p>
-    <p className="text-sm text-muted-foreground tracking-widest uppercase">
-      September 14, 2026 · Napa Valley, California
+  <footer className="py-16 px-6 border-t border-border/50 text-center">
+    <p className="font-display text-3xl italic text-foreground mb-2">Megan & Myles</p>
+    <p className="text-xs text-muted-foreground tracking-[0.3em] uppercase">
+      June 12, 2027 · London
     </p>
-    <p className="text-xs text-muted-foreground mt-6">Made with love</p>
+    <div className="w-8 h-px bg-primary/30 mx-auto mt-8 mb-4" />
+    <p className="text-xs text-muted-foreground/50 font-light">Made with love</p>
   </footer>
 );
 

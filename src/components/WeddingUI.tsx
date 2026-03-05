@@ -8,17 +8,17 @@ interface SectionProps {
 }
 
 export const Section = ({ children, className = "", id }: SectionProps) => (
-  <section id={id} className={`py-20 md:py-32 px-6 ${className}`}>
+  <section id={id} className={`py-24 md:py-36 px-6 ${className}`}>
     <div className="container mx-auto max-w-4xl">{children}</div>
   </section>
 );
 
 export const FadeIn = ({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) => (
   <motion.div
-    initial={{ opacity: 0, y: 30 }}
+    initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.7, delay, ease: "easeOut" }}
+    viewport={{ once: true, margin: "-80px" }}
+    transition={{ duration: 1, delay, ease: [0.25, 0.1, 0.25, 1] }}
     className={className}
   >
     {children}
@@ -26,9 +26,9 @@ export const FadeIn = ({ children, className = "", delay = 0 }: { children: Reac
 );
 
 export const Divider = () => (
-  <div className="flex items-center justify-center gap-4 my-12">
-    <div className="h-px w-16 bg-border" />
-    <span className="text-accent text-2xl font-display">♥</span>
-    <div className="h-px w-16 bg-border" />
+  <div className="flex items-center justify-center gap-6 my-16">
+    <div className="h-px w-20 bg-gradient-to-r from-transparent to-primary/30" />
+    <span className="text-primary text-sm font-display tracking-widest">✦</span>
+    <div className="h-px w-20 bg-gradient-to-l from-transparent to-primary/30" />
   </div>
 );
