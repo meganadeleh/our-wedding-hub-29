@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
-        body: ['"Outfit"', 'sans-serif'],
+        display: ['"Bodoni Moda"', 'serif'],
+        script: ['"Pinyon Script"', 'cursive'],
+        body: ['"Jost"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
