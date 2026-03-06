@@ -1,0 +1,4 @@
+project_id = "cngwialapanlnllulupf"
+
+[functions.log-contribution]
+verify_jwt = false
