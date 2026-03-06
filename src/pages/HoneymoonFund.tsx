@@ -51,7 +51,7 @@ const HoneymoonFund = () => {
       }
 
       // Open PayPal link
-      const paypalUrl = `https://www.paypal.me/YOURPAYPALME/${amount}GBP`;
+      const paypalUrl = `https://www.paypal.me/meganadeleh/${amount}GBP`;
       window.open(paypalUrl, "_blank");
 
       toast.success(`Thank you ${name}! You'll be redirected to complete your gift of £${amount} 💕`);
