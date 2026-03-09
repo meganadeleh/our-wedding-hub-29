@@ -1,25 +1,43 @@
 import { useState } from "react";
 import { Section, FadeIn, Divider } from "@/components/WeddingUI";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const RSVP = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     attending: "",
-    guests: "1",
-    dietary: "",
-    song: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.attending) {
       toast.error("Please fill in all required fields");
       return;
     }
-    toast.success("Thank you for your RSVP! We can't wait to celebrate with you! 🎉");
-    setFormData({ name: "", email: "", attending: "", guests: "1", dietary: "", song: "" });
+
+    setIsSubmitting(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("log-rsvp", {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          attending: formData.attending,
+        },
+      });
+
+      if (error) throw error;
+
+      toast.success("Thank you for your RSVP! We can't wait to celebrate with you! 🎉");
+      setFormData({ name: "", email: "", attending: "" });
+    } catch (err) {
+      console.error("RSVP error:", err);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const update = (field: string, value: string) => setFormData((prev) => ({ ...prev, [field]: value }));
@@ -33,6 +51,9 @@ const RSVP = () => {
             <h1 className="text-5xl md:text-7xl font-script text-foreground">RSVP</h1>
             <p className="text-muted-foreground mt-6 max-w-xl mx-auto font-light">
               Please respond by April 1, 2027
+            </p>
+            <p className="text-muted-foreground mt-3 max-w-xl mx-auto font-light italic text-sm">
+              Please fill this in per person
             </p>
           </div>
         </FadeIn>
@@ -83,50 +104,12 @@ const RSVP = () => {
               </div>
             </div>
 
-            {formData.attending === "Joyfully Accept" && (
-              <>
-                <div>
-                  <label className="text-xs text-muted-foreground tracking-[0.2em] uppercase block mb-3 font-light">Number of Guests</label>
-                  <select
-                    value={formData.guests}
-                    onChange={(e) => update("guests", e.target.value)}
-                    className="w-full bg-transparent border-b border-border px-0 py-3 text-foreground focus:outline-none focus:border-primary transition-colors duration-500"
-                  >
-                    {[1, 2, 3, 4].map((n) => (
-                      <option key={n} value={n} className="bg-card">{n}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="text-xs text-muted-foreground tracking-[0.2em] uppercase block mb-3 font-light">Dietary Requirements</label>
-                  <input
-                    type="text"
-                    value={formData.dietary}
-                    onChange={(e) => update("dietary", e.target.value)}
-                    className="w-full bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/30 focus:outline-none focus:border-primary transition-colors duration-500"
-                    placeholder="Vegetarian, gluten-free, etc."
-                  />
-                </div>
-
-                <div>
-                  <label className="text-xs text-muted-foreground tracking-[0.2em] uppercase block mb-3 font-light">Song Request</label>
-                  <input
-                    type="text"
-                    value={formData.song}
-                    onChange={(e) => update("song", e.target.value)}
-                    className="w-full bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/30 focus:outline-none focus:border-primary transition-colors duration-500"
-                    placeholder="What gets you on the dance floor?"
-                  />
-                </div>
-              </>
-            )}
-
             <button
               type="submit"
-              className="w-full py-4 bg-primary text-primary-foreground tracking-[0.3em] uppercase text-xs hover:opacity-90 transition-opacity mt-4"
+              disabled={isSubmitting}
+              className="w-full py-4 bg-primary text-primary-foreground tracking-[0.3em] uppercase text-xs hover:opacity-90 transition-opacity mt-4 disabled:opacity-50"
             >
-              Send RSVP
+              {isSubmitting ? "Sending..." : "Send RSVP"}
             </button>
           </form>
         </FadeIn>
