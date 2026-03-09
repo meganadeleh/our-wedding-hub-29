@@ -2,3 +2,6 @@ project_id = "cngwialapanlnllulupf"
 
 [functions.log-contribution]
 verify_jwt = false
+
+[functions.log-rsvp]
+verify_jwt = false
