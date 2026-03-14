@@ -21,15 +21,17 @@ const RSVP = () => {
 
     setIsSubmitting(true);
     try {
-      const { data, error } = await supabase.functions.invoke("log-rsvp", {
-        body: {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "rsvp",
           name: formData.name,
           email: formData.email,
           attending: formData.attending,
-        },
+        }),
       });
-
-      if (error) throw error;
 
       toast.success("Thank you for your RSVP! We can't wait to celebrate with you! 🎉");
       setFormData({ name: "", email: "", attending: "" });
