@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Section, FadeIn, Divider } from "@/components/WeddingUI";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzZl85Xofv2nJl4ySthKlGLY0nPVcRwBDUK3qtPPfa3yrSPpoxmr9IbUNMbdx8afPVs/exec";
 
 const RSVP = () => {
   const [formData, setFormData] = useState({
