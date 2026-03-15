@@ -21,16 +21,15 @@ const RSVP = () => {
 
     setIsSubmitting(true);
     try {
-      await fetch(SCRIPT_URL, {
-        method: "POST",
+      const params = new URLSearchParams({
+        type: "rsvp",
+        name: formData.name,
+        email: formData.email,
+        attending: formData.attending,
+      });
+      await fetch(`${SCRIPT_URL}?${params.toString()}`, {
+        method: "GET",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "rsvp",
-          name: formData.name,
-          email: formData.email,
-          attending: formData.attending,
-        }),
       });
 
       toast.success("Thank you for your RSVP! We can't wait to celebrate with you! 🎉");
